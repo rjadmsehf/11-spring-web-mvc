@@ -24,7 +24,7 @@ public class WebConfiguration implements WebMvcConfigurer {
                 .excludePathPatterns("/css/**")
                 .excludePathPatterns("/images/**")
                 .excludePathPatterns("/js/**")
-                /* /error 로 포워딩 되는 경로도 제외해 주어야 한다. */
+                /* 필기.  /error 로 포워딩 되는 경로도 제외해 주어야 한다. */
                 .excludePathPatterns("/error");
     }
 }
