@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ohgiraffers.crud.menu.model.dao.MenuMapper">
+
+    <resultMap id="menuResultMap" type="com.ohgiraffers.crud.menu.model.dto.MenuDTO">
+        <id property="code" column="menu_code"/>
+        <result property="name" column="menu_name"/>
+        <result property="price" column="menu_price"/>
+        <result property="categoryCode" column="category_code"/>
+        <result property="orderableStatus" column="orderable_status"/>
+    </resultMap>
+
+    <resultMap id="categoryResultMap" type="com.ohgiraffers.crud.menu.model.dto.CategoryDTO">
+        <id property="code" column="category_code"/>
+        <result property="name" column="category_name"/>
+        <result property="refCategoryCode" column="ref_category_code"/>
+    </resultMap>
+
+    <select id="findAllMenus" resultMap="menuResultMap">
+        select
+            menu_code,
+            menu_name,
+            menu_price,
+            category_code,
+            orderable_status
+        from tbl_menu
+        where orderable_status = 'Y'
+        order by menu_code
+    </select>
+
+    <select id="findAllCategory" resultMap="categoryResultMap">
+        select
+            category_code,
+            category_name,
+            ref_category_code
+        from tbl_category
+    </select>
+<!-- 필기 새로윤 값을 입력받아와서 DB 저장 해주는 쿼리문 입니다 !!-->
+    <insert id="registNewMenu" parameterType="com.ohgiraffers.crud.menu.model.dto.MenuDTO"
+    useGeneratedKeys="true" keyProperty="code">
+        insert into tbl_menu
+        (
+            menu_name
+        ,   menu_price
+        ,   category_Code
+        ,   orderable_status
+        )
+        values
+        (
+            #{ name }
+        ,   #{ price }
+        ,   #{ categoryCode }
+        ,   #{ orderableStatus }
+        )
+    </insert>
+</mapper>
