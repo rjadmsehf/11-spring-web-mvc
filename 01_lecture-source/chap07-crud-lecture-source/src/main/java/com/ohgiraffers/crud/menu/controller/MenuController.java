@@ -60,7 +60,7 @@ public class MenuController {
         rttr.addFlashAttribute("successMessage" , messageSource.getMessage("registMenu",new Object[]{newMenu.getName(), newMenu.getPrice()}, locale));
 
         return "redirect:/menu/list";
-
+//리스트
     }
 
 
