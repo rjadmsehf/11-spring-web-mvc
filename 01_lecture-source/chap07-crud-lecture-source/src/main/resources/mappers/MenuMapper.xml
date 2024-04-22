@@ -55,4 +55,28 @@
         ,   #{ orderableStatus }
         )
     </insert>
+    <resultMap id="menuAndCategoryResultMap" type="com.ohgiraffers.crud.menu.model.dto.MenuAndCategoryDTO">
+        <id property="code" column="menu_code"/>
+        <result property="name" column="menu_name"/>
+        <result property="price" column="menu_price"/>
+        <result property="orderableStatus" column="orderable_status"/>
+        <association property="categoryDTO" javaType="com.ohgiraffers.crud.menu.model.dto.CategoryDTO">
+            <id property="code" column="category_code"/>
+            <result property="name" column="category_name"/>
+            <result property="refCategoryCode" column="ref_category_code"/>
+        </association>
+    </resultMap>
+
+    <select id="findAllMenuCategory" resultMap="menuAndCategoryResultMap">
+        SELECT a.menu_code, a.menu_name, a.menu_price, a.orderable_status, b.category_code, b.category_name, b.ref_category_code
+        FROM tbl_menu a
+        JOIN tbl_category b ON a.category_code = b.ref_category_code
+        WHERE a.orderable_status = 'Y';
+    </select>
+
+    <delete id="deleteMenuByCode" parameterType="int">
+        delete from tbl_menu
+        where menu_code = #{ code }
+    </delete>
+
 </mapper>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <oiv th:replace="common/header.html"></oiv>
+    <table border="1">
+        <tr>
+            <th>메뉴 번호</th>
+            <th>메뉴 이름</th>
+            <th>메뉴 가격</th>
+            <th>카테고리 코드</th>
+            <th>판매 상태</th>
+            <th>카테고리 이름</th>
+            <th>상위 카테고리</th>
+        </tr>
+        <tr th:each="menuAndCategory : ${menuAndCategoryList}">
+            <td th:text="${menuAndCategory.code}"></td>
+            <td th:text="${menuAndCategory.name}"></td>
+            <td th:text="${menuAndCategory.price}"></td>
+            <td th:text="${menuAndCategory.categoryDTO.code}"></td>
+            <td th:text="${menuAndCategory.orderableStatus}"></td>
+            <td th:text="${menuAndCategory.categoryDTO.name}"></td>
+            <td th:text="${menuAndCategory.categoryDTO.refCategoryCode}"></td>
+        </tr>
+    </table>
+</body>
+</html>
