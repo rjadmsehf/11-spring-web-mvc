@@ -21,7 +21,7 @@ public class MenuService {
     }
     public List<MenuDTO> findAllMenu(){
 
-        return menuMapper.findAllMenus();  //필기
+        return menuMapper.findAllMenus();  //필기 받아온 값 mapper 로 넘겨주기
     }
 
 
@@ -50,6 +50,7 @@ public class MenuService {
     public void deleteMenuByCode(int code) {
 
         menuMapper.deleteMenuByCode(code);
+
 
     }
 }

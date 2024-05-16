@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-@Mapper              //필기 xml 과 연결시키는 mmaper
+@Mapper              //필기 xml 과 연결시키는 mapper
 public interface MenuMapper {
 
 

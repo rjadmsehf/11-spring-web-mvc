@@ -34,7 +34,7 @@ public class MenuController {
     @GetMapping("/list")
     public String findMenuList(Model model){
 
-        List<MenuDTO> menuList = menuService.findAllMenu();  //필기
+        List<MenuDTO> menuList = menuService.findAllMenu();  //필기 service 에 있는 findAllMenu에 값넣어주기
 
         model.addAttribute("menuList" , menuList);
 
